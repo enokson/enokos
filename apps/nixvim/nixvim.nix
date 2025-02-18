@@ -1,9 +1,6 @@
 {inputs, ... }: { pkgs, lib, config, ... } : {
   imports = [inputs.nixvim.nixosModules.nixvim];
-  options = {
-    nixvim.enable = lib.mkEnableOption "enables nixvim";
-  };
-  config = lib.mkIf config.nixvim.enable {
+  config = {
     programs.nixvim = {
       enable = true;
       #colorschemes.gruvbox.enable = true;
