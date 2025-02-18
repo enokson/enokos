@@ -24,6 +24,8 @@
       wine
       winetricks
       bottles
+
+      kitty
     ];
   };
 

@@ -19,8 +19,8 @@
       imports = [ ./pkgs/utils.nix ];
     };
 
+    nixosModules.zsh = import ./shells/zsh/zsh.nix;
     nixosModules.theme = import ./theme/theme.nix {inherit inputs;};
-
     nixosModules.neovim = import ./apps/nixvim/nixvim.nix {inherit inputs;};
 
   };
