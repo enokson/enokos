@@ -3,8 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    #nixvim.url = "github:nix-community/nixvim";
-    #nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -21,12 +21,7 @@
 
     nixosModules.theme = import ./theme/theme.nix {inherit inputs;};
 
-    #nixosModules.neovim = { config, options, ... }: {
-    #  imports = [ 
-    #    inputs.nixvim.nixosModules.nixvim
-    #    ./apps/nixvim/nixvim.nixvim
-    #  ];
-    #};
+    nixosModules.neovim = import ./apps/nixvim/nixvim.nix {inherit inputs;};
 
   };
 }
