@@ -26,10 +26,13 @@
       hunspellDicts.en_US
       nh nix-output-monitor nvd # nix related
       openvpn
+      eza # ls replacement
+      fzf # fuzzy finding
+      zoxide # cd replacement
+      kitty # terminal emulator
     ];
     services.tailscale.enable = true;
     programs.openvpn3.enable = true;
-
   };
 
 }
