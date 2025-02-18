@@ -3,9 +3,13 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    #nixvim.url = "github:nix-community/nixvim";
+    #nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    stylix.url = "github:danth/stylix";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs }:
+  outputs = { self, nixpkgs, ... } @ inputs:
   let 
     pkgs = nixpkgs.legacyPackages."x86_64-linux";
     lib = nixpkgs.lib;
@@ -15,11 +19,14 @@
       imports = [ ./pkgs/utils.nix ];
     };
 
-    #nixosModules.hyprland = { config, options }: {
-    #  options.hypr.enable = lib.mkEnableOption;
-    #  config = lib.mkIf config.hypr.enable {
-    #    modules = [];
-    #  };
+    nixosModules.theme = import ./theme/theme.nix {inherit inputs;};
+
+    #nixosModules.neovim = { config, options, ... }: {
+    #  imports = [ 
+    #    inputs.nixvim.nixosModules.nixvim
+    #    ./apps/nixvim/nixvim.nixvim
+    #  ];
     #};
+
   };
 }
