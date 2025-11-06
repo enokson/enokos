@@ -1,0 +1,6 @@
+{ config, ... }: {
+  options = {};
+  config = {
+
+  };
+}
